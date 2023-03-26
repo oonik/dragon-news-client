@@ -20,7 +20,7 @@ const Header = () => {
      .catch(error => console.error(error))
   }
     return (
-        <Navbar className='mb-5' collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className='mb-5' sticky='top' collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand><Link to='/'>Dragon News</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -41,7 +41,7 @@ const Header = () => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link>
+            <>
             {
               user?.uid ?
               <>
@@ -54,7 +54,7 @@ const Header = () => {
                <Link to='/register'>Register</Link>
               </>
              }
-            </Nav.Link>
+            </>
             <Nav.Link eventKey={2} href="#memes">
             </Nav.Link>
           </Nav>

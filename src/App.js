@@ -7,6 +7,9 @@ import Category from './Pages/Category/Category';
 import News from './Pages/News/News/News';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import TermsAndConditions from './Pages/others/TermsAndConditions/TermsAndConditions';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const router = createBrowserRouter([
@@ -26,7 +29,7 @@ function App() {
         },
         {
           path: '/news/:id',
-          element: <News></News>,
+          element:<PrivateRoute> <News></News></PrivateRoute>,
           loader: ({params})=>fetch(`http://localhost:5000/news/${params.id}`)
         },
         {
@@ -36,6 +39,10 @@ function App() {
         {
           path: '/register',
           element: <Register></Register>
+        },
+        {
+         path: '/terms',
+         element: <TermsAndConditions></TermsAndConditions>
         }
       ]
     }
@@ -43,6 +50,7 @@ function App() {
   return (
     <div>
        <RouterProvider router={router}></RouterProvider>
+       <Toaster></Toaster>
     </div>
   );
 }
